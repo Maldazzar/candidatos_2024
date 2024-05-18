@@ -21,21 +21,25 @@ def timeConversion(s):
             print("Valor de entrada inválido. Formato esperado: HH:MM:SSTT (TT = AM ou PM)")
         else:
             test = True
-    s = s[-9:-3]
-    hora, minuto, segundo = s.split(':')
-    if s.upper().endswith('PM'):
-        hora = int(hora) + 12
-    hora_str = hora
-    minuto_str = f'{minuto:02}'
-    segundo_str = f'{segundo:02}'
-    military = f'{hora_str}:{minuto_str}:{segundo_str}'
-    print(military)       
-                
+    period = s[-2:]
+    time = s[:-2]
+    hh, mm, ss = time.split(':')
+    hh = int(hh)
+    if period == "AM":
+        # Caso especial para 12 AM
+        if hh == 12:
+            hh = 0
+    else:  # PM
+        # Caso especial para 12 PM
+        if hh != 12:
+            hh += 12
+    hh = f"{hh:02}"
+    return f"{hh}:{mm}:{ss}"
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-    s = input()
+    s = input().strip()
 
     result = timeConversion(s)
 
