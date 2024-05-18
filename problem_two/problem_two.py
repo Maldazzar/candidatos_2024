@@ -14,7 +14,12 @@ import sys
 #
 
 def timeConversion(s):
-    # Write your code here
+    test = False
+    while (test == False):
+        s = input("Qual a hora a ser convertida?")
+        if not s.upper().endswith('AM') and not s.upper().endswith('PM'):
+            raise ValueError
+                
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
