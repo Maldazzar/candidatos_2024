@@ -18,7 +18,18 @@ def timeConversion(s):
     while (test == False):
         s = input("Qual a hora a ser convertida?")
         if not s.upper().endswith('AM') and not s.upper().endswith('PM'):
-            raise ValueError
+            print("Valor de entrada inválido. Formato esperado: HH:MM:SSTT (TT = AM ou PM)")
+        else:
+            test = True
+    s = s[-9:-3]
+    hora, minuto, segundo = s.split(':')
+    if s.upper().endswith('PM'):
+        hora = int(hora) + 12
+    hora_str = hora
+    minuto_str = f'{minuto:02}'
+    segundo_str = f'{segundo:02}'
+    military = f'{hora_str}:{minuto_str}:{segundo_str}'
+    print(military)       
                 
 
 if __name__ == '__main__':
