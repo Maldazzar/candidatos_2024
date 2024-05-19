@@ -14,7 +14,20 @@ import sys
 #
 
 def bigSorting(unsorted):
-    # Write your code here
+    print("Digite a quantidade de números que deseja ordenar (entre 1 e 1 milhão):")
+    n = int(input().strip())
+    if n < 1 or n > 1000000:
+        print("O número deve estar entre 1 e 1 milhão.")
+    else:
+        numbers = []
+    print(f"Digite {n} números inteiros:")
+    for _ in range(n):
+        number = int(input().strip())
+        numbers.append(number)
+    numbers.sort()
+    print("Números ordenados:")
+    for number in numbers:
+        print(number)
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
